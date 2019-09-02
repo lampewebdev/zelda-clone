@@ -1,11 +1,19 @@
 import Phaser from "phaser";
-import makeAnimations from '../animations/heroAnims.js';
+// Hero Sprites
+import heroAnimations from '../animations/heroAnims.js';
 import heroIdleDown from '../assets/Character/Char_one/Idle/Char_idle_down.png';
 import heroWalkLeft from '../assets/Character/Char_one/Walk/Char_walk_left.png';
 import heroWalkRight from '../assets/Character/Char_one/Walk/Char_walk_right.png';
 import heroWalkUp from '../assets/Character/Char_one/Walk/Char_walk_up.png';
 import heroWalkDown from '../assets/Character/Char_one/Walk/Char_walk_down.png';
 
+// Skeleton Sprites
+import skelAnimations from '../animations/skelAnims.js';
+import skelIdleDown from '../assets/Skeleton/Idle/Skel_idle_down.png';
+import skelWalkLeft from '../assets/Skeleton/Walk/Skel_walk_left.png';
+import skelWalkRight from '../assets/Skeleton/Walk/Skel_walk_right.png';
+import skelWalkUp from '../assets/Skeleton/Walk/Skel_walk_up.png';
+import skelWalkDown from '../assets/Skeleton/Walk/Skel_walk_down.png';
 class BootScene extends Phaser.Scene {
     constructor() {
         super({
@@ -23,11 +31,13 @@ class BootScene extends Phaser.Scene {
         });
 
         this.load.on('complete', () => {
-            makeAnimations(this);
+            heroAnimations(this);
+            skelAnimations(this);
             progress.destroy();
             this.scene.start('GameScene');
         })
 
+        // hero spritesheets
         this.load.spritesheet('heroIdleDown',
             heroIdleDown,
             { frameWidth: 16, frameHeight: 16 }
@@ -49,6 +59,27 @@ class BootScene extends Phaser.Scene {
             { frameWidth: 16, frameHeight: 16 }
         );
 
+        // skel spritesheets
+        this.load.spritesheet('skelIdleDown',
+            skelIdleDown,
+            { frameWidth: 16, frameHeight: 16 }
+        );
+        this.load.spritesheet('skelWalkLeft',
+            skelWalkLeft,
+            { frameWidth: 16, frameHeight: 16 }
+        );
+        this.load.spritesheet('skelWalkRight',
+            skelWalkRight,
+            { frameWidth: 16, frameHeight: 16 }
+        );
+        this.load.spritesheet('skelWalkUp',
+            skelWalkUp,
+            { frameWidth: 16, frameHeight: 16 }
+        );
+        this.load.spritesheet('skelWalkDown',
+            skelWalkDown,
+            { frameWidth: 16, frameHeight: 16 }
+        );
     }
 }
 

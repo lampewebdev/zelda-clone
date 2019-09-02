@@ -6,7 +6,7 @@ class Hero extends Phaser.GameObjects.Sprite {
         this.setTexture('heroIdleDown');
         scene.physics.world.enable(this);
         scene.add.existing(this);
-        
+        this.body.setCollideWorldBounds(true);
     }
 }
 

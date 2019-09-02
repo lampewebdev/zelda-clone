@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-const DEFAULT_VELECITY = 120;
+const DEFAULT_VELECITY = 80;
 export default ({scene, hero}) => {
     const cursors = scene.input.keyboard.createCursorKeys();
     if (cursors.left.isDown) {
