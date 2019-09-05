@@ -14,6 +14,12 @@ import skelWalkLeft from '../assets/Skeleton/Walk/Skel_walk_left.png';
 import skelWalkRight from '../assets/Skeleton/Walk/Skel_walk_right.png';
 import skelWalkUp from '../assets/Skeleton/Walk/Skel_walk_up.png';
 import skelWalkDown from '../assets/Skeleton/Walk/Skel_walk_down.png';
+
+// Misc Assets
+import tree from '../assets/Other/Misc/Tree/Tree.png';
+import treeTop from '../assets/Other/Misc/Tree/Tree_top.png';
+import bush from '../assets/Other/Misc/Bush.png';
+
 class BootScene extends Phaser.Scene {
     constructor() {
         super({
@@ -80,6 +86,10 @@ class BootScene extends Phaser.Scene {
             skelWalkDown,
             { frameWidth: 16, frameHeight: 16 }
         );
+
+        this.load.image('tree', tree);
+        this.load.image('treeTop', treeTop);
+        this.load.image('bush', bush);
     }
 }
 

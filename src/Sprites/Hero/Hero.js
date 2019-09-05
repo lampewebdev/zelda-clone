@@ -11,6 +11,7 @@ class Hero extends Phaser.GameObjects.Sprite {
         this.invincibility = false;
         this.coolDowntime = 1000
     }
+    
     hit(amount) {
         if (this.invincibility) {
             return;

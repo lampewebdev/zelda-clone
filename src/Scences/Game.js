@@ -36,7 +36,37 @@ class GameScene extends Phaser.Scene {
         });
     }
     create() {
-        this.cameras.main.setBackgroundColor('#3CB371');
+        this.cameras.main.setBackgroundColor('#c8d45d');
+
+        let firstTreetopX = 11;
+        let firstTreetopY = 4;
+        const treetop = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+        treetop.flipY = true;
+        firstTreetopX += 46
+        const treetop2 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+        treetop2.flipY = true;
+        firstTreetopX += 46;
+        const treetop3 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+        treetop3.flipY = true;
+        firstTreetopX += 46;
+        const treetop4 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+        treetop4.flipY = true;
+        firstTreetopX += 46;
+        const treetop5 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+        treetop5.flipY = true;
+        firstTreetopX += 46;
+        const treetop6 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+        treetop6.flipY = true;
+
+        this.add.image(50, 120, 'bush');
+        this.add.image(220, 80, 'bush');
+        this.add.image(120, 50, 'bush');
+        this.add.image(80, 200, 'bush');
+        this.add.image(200, 170, 'bush');
+
+        const tree1 = this.add.image(230, 215, 'tree');
+        const tree2 = this.add.image(25, 215, 'tree');
+
         this.hero = new Hero({
             scene: this,
             key: 'hero',
