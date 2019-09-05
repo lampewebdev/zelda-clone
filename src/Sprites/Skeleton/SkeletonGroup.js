@@ -5,8 +5,8 @@ class SkeletonGroup extends Phaser.Physics.Arcade.Group  {
         super(world, scene, config)
     }
 
-    hitPlayer() {
-        console.log('hello')
+    hitPlayer(hero) {
+        hero.hit(10);
     }
 }
 
