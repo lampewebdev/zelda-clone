@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-const DEFAULT_VELECITY = 20;
+const DEFAULT_VELECITY = -20;
 export default ({scene, skel}) => {
     const randomDelay = Math.floor(Math.random() * 3000) + 1500;
     scene.time.addEvent({ 
