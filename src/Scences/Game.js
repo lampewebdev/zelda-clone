@@ -107,7 +107,6 @@ class GameScene extends Phaser.Scene {
         this.physics.add.collider(this.skeletons, this.trees);
         this.physics.add.collider(this.hero, this.bushes); 
         this.physics.add.collider(this.skeletons, this.bushes); 
- 
     }
 
     update() {

@@ -1,11 +1,25 @@
 import Phaser from "phaser";
+
 // Hero Sprites
 import heroAnimations from '../animations/heroAnims.js';
+
+// Hero Idle Sprites
 import heroIdleDown from '../assets/Character/Char_one/Idle/Char_idle_down.png';
+import heroIdleLeft from '../assets/Character/Char_one/Idle/Char_idle_left.png';
+import heroIdleRight from '../assets/Character/Char_one/Idle/Char_idle_right.png';
+import heroIdleUp from '../assets/Character/Char_one/Idle/Char_idle_up.png';
+
+// Hero walking Sprites
 import heroWalkLeft from '../assets/Character/Char_one/Walk/Char_walk_left.png';
 import heroWalkRight from '../assets/Character/Char_one/Walk/Char_walk_right.png';
 import heroWalkUp from '../assets/Character/Char_one/Walk/Char_walk_up.png';
 import heroWalkDown from '../assets/Character/Char_one/Walk/Char_walk_down.png';
+
+// Hero Attack Sprites
+import heroAttackLeft from '../assets/Character/Char_one/Attack/Char_atk_left.png';
+import heroAttackRight from '../assets/Character/Char_one/Attack/Char_atk_right.png';
+import heroAttackUp from '../assets/Character/Char_one/Attack/Char_atk_up.png';
+import heroAttackDown from '../assets/Character/Char_one/Attack/Char_atk_down.png';
 
 // Skeleton Sprites
 import skelAnimations from '../animations/skelAnims.js';
@@ -48,6 +62,18 @@ class BootScene extends Phaser.Scene {
             heroIdleDown,
             { frameWidth: 16, frameHeight: 16 }
         );
+        this.load.spritesheet('heroIdleUp',
+            heroIdleUp,
+            { frameWidth: 16, frameHeight: 16 }
+        );
+        this.load.spritesheet('heroIdleLeft',
+            heroIdleLeft,
+            { frameWidth: 16, frameHeight: 16 }
+        );
+        this.load.spritesheet('heroIdleRight',
+            heroIdleRight,
+            { frameWidth: 16, frameHeight: 16 }
+        );
         this.load.spritesheet('heroWalkLeft',
             heroWalkLeft,
             { frameWidth: 16, frameHeight: 16 }
@@ -64,7 +90,23 @@ class BootScene extends Phaser.Scene {
             heroWalkDown,
             { frameWidth: 16, frameHeight: 16 }
         );
-
+        // Hero Attack spritesheets
+        this.load.spritesheet('heroAttackUp',
+            heroAttackUp,
+            { frameWidth: 138/6, frameHeight: 18 }
+        )
+        this.load.spritesheet('heroAttackLeft',
+            heroAttackLeft,
+            { frameWidth: 16, frameHeight: 21 }
+        )
+        this.load.spritesheet('heroAttackRight',
+            heroAttackRight,
+            { frameWidth: 16, frameHeight: 21 }
+        )
+        this.load.spritesheet('heroAttackDown',
+            heroAttackDown,
+            { frameWidth: 23, frameHeight: 23 }
+        )
         // skel spritesheets
         this.load.spritesheet('skelIdleDown',
             skelIdleDown,
