@@ -23,10 +23,60 @@ const createSkeletons = ({scene}) => {
             x: startingXPosition,
             y: startingYPosition,
         });
+        
         scene.skeletons.add(currentSekeleton);
     };
+    Phaser.Actions.Call(scene.skeletons.getChildren(), function (skeleton) {
+        skeleton.body.setSize(
+            skeleton.body.width * 0.8,
+            skeleton.body.height * 0.7,
+        );
+    });
     scene.physics.world.enable(scene.skeletons);
     scene.physics.add.overlap(scene.hero, scene.skeletons, scene.skeletons.hitPlayer, null, scene);
+}
+
+const fillSceneWithTrees = ({scene}) => {
+    let firstTreetopX = 11;
+    let firstTreetopY = 4;
+    const treetop = scene.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+    treetop.flipY = true;
+    firstTreetopX += 46
+    const treetop2 = scene.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+    treetop2.flipY = true;
+    firstTreetopX += 46;
+    const treetop3 = scene.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+    treetop3.flipY = true;
+    firstTreetopX += 46;
+    const treetop4 = scene.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+    treetop4.flipY = true;
+    firstTreetopX += 46;
+    const treetop5 = scene.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+    treetop5.flipY = true;
+    firstTreetopX += 46;
+    const treetop6 = scene.add.image(firstTreetopX, firstTreetopY, 'treeTop');
+    treetop6.flipY = true;
+
+    scene.trees = scene.physics.add.staticGroup();
+    scene.trees.create(230, 215, 'tree');
+    scene.trees.create(25, 215, 'tree');
+
+    Phaser.Actions.Call(scene.trees.getChildren(), function (tree) {
+        tree.setSize(tree.width * 0.7, tree.height * 0.8, tree.width / 2);
+    })
+} 
+
+const fillSceneWithBushes = ({ scene }) => {
+    scene.bushes = scene.physics.add.staticGroup();
+    scene.bushes.create(50, 120, 'bush');
+    scene.bushes.create(220, 80, 'bush');
+    scene.bushes.create(120, 50, 'bush');
+    scene.bushes.create(80, 200, 'bush');
+    scene.bushes.create(200, 170, 'bush');
+
+    Phaser.Actions.Call(scene.bushes.getChildren(), function (bush) {
+        bush.setSize(bush.width * 0.7, bush.height * 0.7, bush.width / 2);
+    })
 }
 
 class GameScene extends Phaser.Scene {
@@ -38,34 +88,7 @@ class GameScene extends Phaser.Scene {
     create() {
         this.cameras.main.setBackgroundColor('#c8d45d');
 
-        let firstTreetopX = 11;
-        let firstTreetopY = 4;
-        const treetop = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
-        treetop.flipY = true;
-        firstTreetopX += 46
-        const treetop2 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
-        treetop2.flipY = true;
-        firstTreetopX += 46;
-        const treetop3 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
-        treetop3.flipY = true;
-        firstTreetopX += 46;
-        const treetop4 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
-        treetop4.flipY = true;
-        firstTreetopX += 46;
-        const treetop5 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
-        treetop5.flipY = true;
-        firstTreetopX += 46;
-        const treetop6 = this.add.image(firstTreetopX, firstTreetopY, 'treeTop');
-        treetop6.flipY = true;
-
-        this.add.image(50, 120, 'bush');
-        this.add.image(220, 80, 'bush');
-        this.add.image(120, 50, 'bush');
-        this.add.image(80, 200, 'bush');
-        this.add.image(200, 170, 'bush');
-
-        const tree1 = this.add.image(230, 215, 'tree');
-        const tree2 = this.add.image(25, 215, 'tree');
+        fillSceneWithBushes({ scene: this });
 
         this.hero = new Hero({
             scene: this,
@@ -73,9 +96,18 @@ class GameScene extends Phaser.Scene {
             x: 100,
             y: 100,
         });
+
         createSkeletons({
             scene: this
         });
+
+        fillSceneWithTrees({ scene: this });
+        
+        this.physics.add.collider(this.hero, this.trees); 
+        this.physics.add.collider(this.skeletons, this.trees);
+        this.physics.add.collider(this.hero, this.bushes); 
+        this.physics.add.collider(this.skeletons, this.bushes); 
+ 
     }
 
     update() {

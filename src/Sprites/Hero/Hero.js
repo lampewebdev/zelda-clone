@@ -6,6 +6,7 @@ class Hero extends Phaser.GameObjects.Sprite {
         this.setTexture('heroIdleDown');
         scene.physics.world.enable(this);
         scene.add.existing(this);
+        this.body.setSize(this.width * 0.8, this.height * 0.8, this.width / 2)
         this.body.setCollideWorldBounds(true);
         this.life = 100;
         this.invincibility = false;
